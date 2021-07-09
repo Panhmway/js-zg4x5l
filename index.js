@@ -5,7 +5,12 @@ import './style.css';
 const appDiv = document.getElementById('app');
 let request = new XMLHttpRequest();
 request.addEventListener('readystatechange', () => {
-  console.log(request.responseText);
+  if(request.readyState===4 && request.status===200){
+    console.log(request.responseText);
+  }else if(request.status===404){
+console.log("Url not sure")
+  }
+
 });
-request.open('get', 'https://jsonplaceholder.typicode.com/todos');
+request.open('get', 'https://jsonplaceholder.typicode.com/todosq');
 request.send();
